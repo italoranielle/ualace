@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %} Lista de Treino Padrão{% endblock title %}
+
+{% block content %}
+    
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Lista de Treinos Padrão</h1>
+      <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" href="#" data-toggle="modal" data-target="#treinoModal">Adicinar treino </a>
+    </div>
+
+     
+    {% for treino in treinos %}
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4">
+          <!-- Card Header - Accordion -->
+          <a href="#collapseCard{{ treino.pk }}" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-success">Treino: {{ treino.titulo}}</h6>
+          </a>
+          <!-- Card Content - Collapse -->
+          <div class="collapse show" id="collapseCard{{ treino.pk }}">
+              <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>Exercicio</th>
+                          <th>Series</th>
+                          <th>Repetição</th>
+                          <th>Duração</th>
+                          <th>Descanso</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+            		   {% for ex in exs  %}
+            		     {% if ex.treino == treino %} 	
+                        	<tr>
+                         	 <td><a href="{% url 'exercicodetalhes' ex.exercicio.pk %}">{{ ex.exercicio}} </a></td>
+                          	 <td>{{ ex.series }}</td>
+                          	 <td> {{ ex.repeticao }}</td>
+                          	 <td>{{ ex.duracao }}</td>
+                          	 <td>{{ ex.descanco }}</td>
+                          	 <td> 
+        	                     <div class="col-auto">
+                                    <a href="{% url 'edittreinoex' ex.pk %}">
+                                        <i class="fas fa-edit fa-1x text-gray-700"></i>
+                                    </a>
+                                  </div>
+                                  <div class="col-auto">
+                                    <a href="{% url 'deltreinoex' ex.pk %}">
+                                        <i class="fas fa-window-close fa-1x text-gray-700"></i>
+                                    </a>
+                                  </div>
+                          	 </td>
+                        	</tr>
+            		     {% endif %}
+            		   {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+           
+
+            <a class="dropdown-item" href="{% url 'deltreino' treino.pk %}" >
+                <i class="fas fa-window-close  fa-sm fa-fw mr-2 text-gray-400"></i>
+                Excluir treino
+            </a>
+            <a class="dropdown-item" href="{% url 'treinoPedit' treino.pk %}" >
+                <i class="fas fa-edit  fa-sm fa-fw mr-2 text-gray-400"></i>
+                Editar Treino
+            </a>
+
+            
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exeModal{{treino.pk}}">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Adicionar Exercico
+            </a>
+            
+            
+            
+            
+              <div class="modal fade" id="exeModal{{treino.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Adicionar Novo Exercicio ao Trenino: {{ treino.titulo}}</h5>
+                      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{% url 'novotreinoex' treino.pk %}" method="post">
+                             {% csrf_token %}
+                        
+                              {% for hidden_field in exform.hidden_fields %}
+                                {{ hidden_field }}
+                              {% endfor %}
+                              {% if exform.non_field_errors %}
+                                <div class="alert alert-danger" role="alert">
+                                  {% for error in exform.non_field_errors %}
+                                    {{ error }}
+                                  {% endfor %}
+                                </div>
+                              {% endif %}
+                            
+                              {% for field in exform.visible_fields %}
+                                <div class="form-group">
+                                  {{ field.label_tag }}
+                            
+                                  {% if exform.is_bound %}
+                                    {% if field.errors %}
+                                      {% render_field field class="form-control is-invalid" %}
+                                      {% for error in field.errors %}
+                                        <div class="invalid-feedback">
+                                          {{ error }}
+                                        </div>
+                                      {% endfor %}
+                                    {% else %}
+                                      {% render_field field class="form-control is-valid" %}
+                                    {% endif %}
+                                  {% else %}
+                                    {% render_field field class="form-control" %}
+                                  {% endif %}
+                            
+                                  {% if field.help_text %}
+                                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                                  {% endif %}
+                                </div>
+                              {% endfor %}
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-success">Salvar</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+    {% endfor %}  
+      
+  <div class="modal fade" id="treinoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Novo trenio</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+          <form action="{% url 'novotreinoP'  %}" method="post">
+            <div class="modal-body">
+                {% csrf_token %}
+                {% for hidden_field in treform.hidden_fields %}
+                  {{ hidden_field }}
+                {% endfor %}
+                {% if exform.non_field_errors %}
+                  <div class="alert alert-danger" role="alert">
+                    {% for error in treform.non_field_errors %}
+                      {{ error }}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              
+                {% for field in treform.visible_fields %}
+                  <div class="form-group">
+                    {{ field.label_tag }}
+              
+                    {% if treform.is_bound %}
+                      {% if field.errors %}
+                        {% render_field field class="form-control is-invalid" %}
+                        {% for error in field.errors %}
+                          <div class="invalid-feedback">
+                            {{ error }}
+                          </div>
+                        {% endfor %}
+                      {% else %}
+                        {% render_field field class="form-control is-valid" %}
+                      {% endif %}
+                    {% else %}
+                      {% render_field field class="form-control" %}
+                    {% endif %}
+              
+                    {% if field.help_text %}
+                      <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                  </div>
+                {% endfor %}      
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-success">Salvar</button>
+          </form> 
+          
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>    
+    
+
+    
+{% endblock content %}
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %} Deletar Treino Exercico {% endblock title %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+      <h6 class="m-0 font-weight-bold text-primary"> Tem certeza que deseja deletar a serie ?  </h6>
+    <input type="submit" value="Deletar" />
+</form>      
+
+
+{% endblock content %}
+

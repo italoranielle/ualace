@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %} Perfil de Usuario {% endblock title %}
+{% block content %}
+{% load static %}
+    <h1 class="h3 mb-4 text-gray-800">Perfil de Usuário</h1>
+    <div class="card shadow mb-4">
+        <div class="row">
+            <div class="row no-gutters align-items-center m-2 col-xl-9 ">                   
+            {% for perfil in usuario %}
+            
+            
+                <div class="row no-gutters align-items-center m-2 col-xl-7 ">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Usuário:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ perfil.username}}</div>
+                    </div>
+                </div>
+                <div class="row no-gutters align-items-center m-2 col-xl-7 ">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Nome:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ perfil.first_name}}</div>
+                    </div>
+                </div>
+                <div class="row no-gutters align-items-center m-2 col-xl-7 ">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Sobrenome:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ perfil.last_name}}</div>
+                    </div>
+                </div>
+                <div class="row no-gutters align-items-center m-2 col-xl-7 ">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Idade:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ perfil.aluno.data_nascimento}}</div>
+                    </div>
+                </div>
+                <div class="row no-gutters align-items-center m-2 col-xl-7 ">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Idade:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ perfil.aluno.idade}}</div>
+                    </div>
+                </div>
+                <div class="row no-gutters align-items-center m-2 col-xl-7 ">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Altura:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ perfil.aluno.altura}}</div>
+                    </div>
+                </div>
+                <div class="row no-gutters align-items-center m-2 col-xl-12 ">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">e-mail:</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ perfil.email}}</div>
+                    </div>
+                </div>
+                
+               <a class="btn btn-info btn-icon-split" href="{% url 'ComposiList' perfil.pk %}">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Composição Corporal</span>
+                </a>
+                <a class="btn btn-info btn-icon-split ml-2" href="{% url 'treinos'  perfil.pk %}">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Treino</span>
+                </a>
+                <a class="btn btn-info btn-icon-split ml-2" href="#">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Medidas</span>
+                </a>
+                <a class="btn btn-info btn-icon-split ml-2" {% if user.is_superuser %}  href="{% url 'adm_update_aluno' perfil.pk  %}" {% else %} href="{% url 'update_aluno' %}"  {% endif %}>
+                    <span class="icon text-white-50">
+                        <i class="fas fa-info-circle"></i>
+                    </span>
+                    <span class="text">Editar Perfil</span>
+                </a>
+                
+                {% endfor %}
+                
+                
+            
+            
+            </div>  
+   
+        </div>
+    
+
+{% endblock content %}

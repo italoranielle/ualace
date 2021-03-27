@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Medidas {{ object.aluno}} {% endblock title %}
+
+{% block content %}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Medidas {{ object.aluno.first_name}} {{ object.aluno.last_name}}</h1>
+        {% if perms.composicaocorporal.edit_composicaocorporal %}
+           <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" href="{% url 'medidasedit' object.pk %}">Editar </a>
+        {% endif  %}
+     </div>
+     <div class="row">    
+         <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pescoço:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.pescoco }}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-bottom-green shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Ombros:</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.ombros}}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">torax:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.torax}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">abdmen:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.abdmen }} </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">quadril:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.quadril}} </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">cintura: </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.cintura}} </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Braço Esquerdo:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.braco_esquerdo}} </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">braço esquerdo contraido:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.braco_esquerdo_c}} </div>
+                  </div>
+
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">braço direito:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.braco_direito}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">braço direito contraido:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.braco_direito_c}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">perna esquerda m:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.perna_esquerda_m}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">perna esquerda d:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.perna_esquerda_d}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">perna esquerda p :</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.perna_esquerda_p }}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">perna direita m:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.perna_direita_m}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">perna direita d:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.perna_direita_d}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">perna direita p:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.perna_direita_p}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>                 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">panturrilha esquerda:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.panturrilha_esquerda}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">panturrilha direita:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.panturrilha_direita}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>    
+        {{ object.data}}     
+
+
+     
+
+        
+{% endblock content %}
+
+        
+        

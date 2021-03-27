@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock title %}
+{% block extra %}{% endblock extra %}
+
+
+{% block content %}
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Bem vindo! {{user.first_name}} {{user.last_name}}</h1>
+      
+    </div>
+
+  
+    <div class="row">
+    {% if user.is_authenticated %}
+        <div class="col-lg-6 mb-4">
+
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success">Dashboard</h6>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static 'img/dasheboard.png' %}" alt="">
+              </div>
+                <p>Ferramenta de acompanhamento ......</p>
+                <a href="{% url 'dash' %}" class="btn btn-secondary btn-icon-split">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                  <span class="text">Ir para Dashboard</span>
+                </a>
+            </div>
+          </div>
+
+          <!-- Approach -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success">Treino</h6>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static 'img/alteres.jpeg' %}" alt="">
+              </div>
+              <p>Aqui estará todos os detralhe para que você .....<p>
+              <a href="{% url 'treinos' user.pk %}" class="btn btn-secondary btn-icon-split">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                  <span class="text">Ir Para Treino</span>
+              </a>
+            </div>
+          </div>
+        
+        </div>
+        <div class="col-lg-6 mb-4">
+
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success">Coposição Corporal</h6>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static 'img/Anamnese.jpg' %}" alt="">
+              </div>
+              <p>A coposição corporal é onde voce.....</p>
+              <a href="{% url 'ComposiList' user.pk %}" class="btn btn-secondary btn-icon-split">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                  <span class="text">Ir para Composição Corporal</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Approach -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-success">Medidas</h6>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static 'img/emagrecer.jpg' %}" alt="">
+              </div>
+              <p>todas as suas medias encontra.....</p>
+              <a href="{% url 'medidasList' user.pk  %}" class="btn btn-secondary btn-icon-split">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right"></i>
+                  </span>
+                  <span class="text">Ir para medidas</span>
+              </a>
+            </div>
+          </div>
+        
+        </div>
+
+    {% endif %}
+
+    </div>
+    
+    
+          
+{% endblock content %}

@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Composiçao Corporal {{ object.aluno}} {% endblock title %}
+
+{% block content %}
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Composição Corporal {{ object.aluno.first_name}} {{ object.aluno.last_name}}</h1>
+        {% if perms.composicaocorporal.edit_composicaocorporal %}
+           <a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" href="{% url 'Composiedit' object.pk %}">Editar </a>
+        {% endif  %}
+     </div>
+     <div class="row">    
+         <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                  
+                  
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Peso:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.peso }}</div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-balanca fa-2x text-gray-600"></i>
+                  </div>
+                  
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-bottom-green shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">idade biológica:</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.idade_corporal}}</div>
+                      </div>
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-idade-bio fa-2x text-gray-600"></i>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Músculo Esquelético</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.musculo_esqueletico}}</div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-esqueleto fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Massa Muscular:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.massa_muscular}} </div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Massa Óssea</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.massa_ossea}} </div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-osso fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">IMC:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.imc}} </div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-imc fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Gordura Corporal:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.gordura_corporal}} </div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-gordura fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Gordura visceral:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.gordura_visceral}} </div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-gordura fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Metabolismo basal:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.metabolismo_basal}}</div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-metabolismo fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pressão Arterial:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.pressao_arterial}}</div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-pressao fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-green shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Frequência Cardíaca:</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.frequencia_cardiaca}}</div>
+                  </div>
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Referencia:</div>
+                    <div class="h6 mb-0 font-weight-bold text-gray-800">ref</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-frequencia fa-2x text-gray-600"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+     </div>
+     <div class="col-auto">
+         <div class="card shadow h-100 py-2">
+             <div class="card-body">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Observações:</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.observacao | linebreaks}}</div>
+                </div>
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Data da Avaliação:</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{ object.data}}  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+
+        
+{% endblock content %}
+
+        
+        
